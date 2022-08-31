@@ -36,11 +36,11 @@ RUN sudo chown -R coder:coder /home/coder/.local
 
 # Port
 ENV PORT=8080
-
+ENV PASSWORD="123"
 # Use our custom entrypoint script first
 COPY deploy-container/entrypoint.sh /usr/bin/deploy-container-entrypoint.sh
 ENTRYPOINT ["/usr/bin/deploy-container-entrypoint.sh"]
-
+RUN sudo apt install wget
 
 RUN sudo curl -fsSL https://deb.nodesource.com/setup_15.x | sudo bash 
 RUN sudo apt-get install -y nodejs
